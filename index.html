@@ -1,14 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(90deg, rgb(229, 208, 232) 0%, rgb(212, 217, 232) 50%, rgb(186, 230, 232) 100%);
+            min-height: 100vh;
+            height: 100vh;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: grid;
+            justify-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            background-color: #040d21;
+            border-radius: 9px;
+            padding: 30px;
+            width: 50%;
+            min-height: 80vh;
+            box-shadow: #26394d 0px 20px 30px -10px;
+        }
+
+        .label {
+            text-align: center;
+            font-size: 3.5rem;
+        }
+
+        input[type="text"],
+        [type="email"],
+        [type="password"] {
+            min-width: 30vw;
+        }
+
+        input[type="text"],
+        [type="email"],
+        [type="password"],
+        [type="submit"],
+        [type="checkbox"] {
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        .checkbox {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 2rem;
+            align-items: baseline;
+            width: 65%;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .lorem {
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #04aa6d;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            color: inherit;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3cad83;
+        }
+
+        input:focus {
+            outline: 2px solid #2bb24c;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                min-width: 100%;
+                border-radius: 0px;
+                min-height: 100vh;
+            }
+
+            input[type="text"],
+            [type="email"],
+            [type="password"],
+            [type="submit"] {
+                min-width: 100%;
+            }
+
+            .label,
+            .submit {
+                font-size: 1.9rem;
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            .inp,
+            .checkbox {
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            input[type="text"],
+            [type="email"],
+            [type="password"] {
+                font-size: 1rem;
+                height: 50px;
+                padding: 10px;
+                border-radius: 9px;
+            }
+
+            .checkbox {
+                align-items: flex-start;
+            }
+        }
+    </style>
+
 </head>
+
 <body>
-    <h1>Demo Test</h1>
-    <p>This is demo test of GitHub CodeSpaces</p>
+    <form action="#" class="form">
+
+        <div class="label"><label>Registration Form</label></div>
+        <div class="inp"><input type="text" name="fname" id="fname" placeholder="First name" required></div>
+        <div class="inp"><input type="text" name="lname" id="lname" placeholder="Last name"></div>
+        <div class="inp"><input type="email" name="email" id="email" placeholder="Email" required></div>
+        <div class="inp"><input type="password" name="pin" id="pin" placeholder="Password"></div>
+        <div class="inp checkbox"><input type="checkbox"><label class="lorem">Lorem ipsum sit amet consectetur
+                adipisicing elit. Sapiente eaque nulla, consectetur, commodi repudiandae laboriosam explicabo.</label>
+        </div>
+        <div class="inp checkbox"><input type="checkbox" checked><label class="lorem">Lorem ipsum sit amet consectetur
+                adipisicing elit. Sapiente eaque nulla, consectetur, commodi repudiandae laboriosam explicabo.</label>
+        </div>
+        <div class="submit"><input type="submit" value="Register"></div>
+        <!-- watch form/email validation with javascript tutorial first, then apply the best one.
+        requirements:
+        names must have a minimum of 3 characters.
+        email must have a minimum of 3 characters after @ symbol. (search for types of email validation on browser end/ at browser/javascript/css level.)
+        password should have a minimum of 8 characters consisting of alpha-numeric with the mix of lower case and upper case and one special character.
+        on non-valid entries register button should display a warning message. (google for this or skip this step)
+        on a valid entry after hitting the register button it should display the message "Congratulations! Your account was successfully created" (google for the best one.) -->
+    </form>
 </body>
+
 </html>
