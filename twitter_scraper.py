@@ -1,25 +1,16 @@
-import sys
+"""This module fetches tweets using snscrape module and stores the results in a pandas DataFrame."""
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
+import json
 
-# Get the command line arguments
-username = sys.argv[1]
-query = sys.argv[2]
-start_date = sys.argv[3]
-end_date = sys.argv[4]
-limit = int(sys.argv[5])
+QUERY = "(websites) (from:Prathkum) until:2023-02-19 since:2023-02-01 -filter:replies"
+LIMIT = 5000
 
-# Construct the query string
-query_str = f'({query}) until:{end_date} since:{start_date} filter:twimg'
+try:
+    tweets = [[tweet.url] for tweet in sntwitter.TwitterSearchScraper(QUERY).get_items()][:LIMIT]
+except AttributeError:
+    print(f"An error occurred: This may be due to a rate limit error or other issue.")
+    tweets = []
 
-# Scrape tweets using snscrape
-tweets = []
-for tweet in sntwitter.TwitterSearchScraper(query_str).get_items():
-  if len(tweets) == limit:
-    break
-  else:
-    tweets.append([tweet.date, tweet.content])
-
-# Save the tweets to a CSV file
-df = pd.DataFrame(tweets, columns=['Date', 'Tweet'])
-df.to_csv(f'{username}_tweets.csv', index=False)
+with open('tweets.json', 'w') as f:
+    json.dump(tweets, f)
